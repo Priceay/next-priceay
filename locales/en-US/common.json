@@ -1,0 +1,24 @@
+{
+    "greeting": "Hallo world",
+    "main":"Find the best price for perfumes in local stores ",
+    "trusted-stores":"+20 Trusted store",
+    "update":"Updated every 48 hour",
+    "search":"Search by brand ",
+    "initials":"A, B, C, D, E, F, G, H, I, J, K, L, M, N,    O, P, Q, R, S, T, U, V, W, X, Y, Z    ",
+    "perfume-men":"Perfumes for Men ",
+    "perfume-women":"Perfumes for Women ",
+    "fav":"Favorites ",
+    "lang":"language ",
+    "stores":"Stores ",
+    "best-price":"Best Price For {{qty}} ml ",
+    "riyal":"Riyal",
+    "go-to-store":"Go to store ",
+    "more":"More",
+    "copy-code":"Copy code ",
+    "copied":"Copied",
+    "updated":" Last update {{hours}} hours ago",
+    "perfume-review":"Perfume review",
+    "include-vat":"The showing price includes VAT",
+    "exclude-vat":"The showing price doesn’t include shipping"
+
+  }

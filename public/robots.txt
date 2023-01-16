@@ -1,0 +1,9 @@
+
+User-agent: *
+Allow: /
+
+sitemap: https://priceay.com/sitemap.xml
+sitemap: https://priceay.com/sitemap_products.xml
+sitemap: https://priceay.com/sitemap_products_en.xml
+
+

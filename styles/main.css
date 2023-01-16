@@ -1,0 +1,105 @@
+input,
+textarea,
+button,
+select,
+span, div,
+a {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+h1 {
+    margin: 0.67em 0;
+  
+
+}
+ 
+ .aa-InputWrapper{
+    overflow: hidden !important;
+ }
+.aa-Input{
+    display:block !important;
+    transform: translateZ(0) !important;
+    user-select: none !important;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: text !important;
+
+}
+input, input:before, input:after {
+    -webkit-user-select: initial;
+    -khtml-user-select: initial;
+    -moz-user-select: initial;
+    -ms-user-select: initial;
+    user-select: initial;
+   } 
+ a:active,
+ a:link,
+a:focus
+{
+    -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+ 
+
+}
+
+img,.transp:active,transp:link,transp:focus{
+    -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+     
+
+}
+
+button:focus { 
+    -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+    
+}
+
+input { 
+    
+    -webkit-user-select: text; /* Chrome, Opera, Safari */
+    -moz-user-select: text; /* Firefox 2+ */
+    -ms-user-select: text; /* IE 10+ */
+    user-select: text; /* Standard syntax */
+}
+
+
+.singlepage h2{
+    font-size: 1.5rem;
+    margin: 3px 0;
+}
+.singlepage h3{
+    font-size: 1.2rem;
+}
+.singlepage p{
+    margin: 15px 0;
+}
+ 
+p{
+    margin: 4px 0;
+}
+    
+.selected{
+    background-color: #E9E9E9;
+}
+.seprated{
+    height: 2px;
+    width: 86%;
+    margin: auto;
+}
+.product  .swiper-slide-active{
+    display: flex;
+    justify-content: center;
+}
+
+
+.overlay {
+    position: fixed; /* Sit on top of the page content */
+    display: block; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+    z-index: 200; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer; /* Add a pointer on hover */
+  }
+  

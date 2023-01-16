@@ -1,0 +1,28 @@
+{
+  "main": "ابحث عن افضل سعر للعطور في المتاجر المحلية",
+  "trusted-stores": " متجر موثوق+20 ",
+  "update": "تحديث كل 48 ساعة ",
+  "search": "ابحث عن طريق الماركة ",
+  "initials": "A, B, C, D, E, F, G, H, I, J, K, L, M, N,    O, P, Q, R, S, T, U, V, W, X, Y, Z    ",
+
+  "perfume-men": "عطور للرجال ",
+  "perfume-women": "عطور للنساء ",
+  "fav": " المفضلة ",
+  "lang": "اللغة  ",
+  "stores": "المتاجر ",
+  "best-price": "افضل سعر لحجم {{qty}} مل ",
+  "riyal": "ريال",
+  "go-to-store": "اذهب للمتجر ",
+  "more": "المزيد ",
+  "copy-code": "نسخ الكود ",
+  "copied": "تم النسخ ",
+  "updated": " آخر تحديث قبل {{hours}} ساعة ",
+  "perfume-review": "مراجعة العطر ",
+  "include-vat": "السعر الظاهر يشمل الضريبة",
+  "exclude-vat": "السعر الظاهر لايشمل الشحن  ",
+  "perfume-unisex": "عطور للجنسين",
+  "shipping-exclude": "السعر الظاهر لايشمل الشحن",
+  "privacy-policy": "سياسية الخصوصية",
+  "terms-and-condition": "الشروط والأحكام",
+  "contact-us": "تواصل معنا  "
+}

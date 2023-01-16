@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    @apply bg-white
+}
+
+.ais-SearchBox-input{
+    @apply w-full
+}
+.ais-SearchBox-submit{
+    @apply w-full flex items-center justify-center border my-2 py-2
+}
+.ais-SearchBox-reset{
+    @apply w-full flex items-center justify-center border my-2 py-2
+
+}
+.ais-Hits-list{
+    @apply grid grid-cols-2
+}
+
+h1{
+    @apply text-3xl  
+}
+
+h2{
+    @apply text-2xl  
+}
+
