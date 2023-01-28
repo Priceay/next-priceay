@@ -34,7 +34,7 @@ export default function Brand(props: Props) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const reqUrl = `${apiUrl}/brands?populate=deep`;
+  const reqUrl = `${apiUrl}/brands?populate=*`;
 
   const res = await fetch(reqUrl).then();
 
