@@ -56,7 +56,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 
   const reqUrl = `${apiUrl}/products${
     loc == "ar" ? "?locale=ar&" : "?"
-  }filters[brands][slug][$contains]=${slug}&populate=deep`;
+  }filters[brands][slug][$contains]=${slug}&populate=*`;
 
   const res = await fetch(reqUrl).then();
   const productData = await res.json();
@@ -64,7 +64,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   if (productData.data.length == 0) {
     const reqUrlLoc = `${apiUrl}/products${
       loc == "ar" ? "?" : "?locale=ar&"
-    }filters[brands][slug][$contains]=${slug}&populate=deep`;
+    }filters[brands][slug][$contains]=${slug}&populate=*`;
     const response = await fetch(reqUrlLoc).then((r) => r.json());
 
     if (
@@ -76,7 +76,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
           .attributes.slug;
       const trUrl = `${apiUrl}/products${
         loc == "ar" ? "?locale=ar&" : "?"
-      }filters[brands][slug][$contains]=${trSlug}&populate=deep`;
+      }filters[brands][slug][$contains]=${trSlug}&populate=*`;
       const trResp = await fetch(trUrl).then((r) => r.json());
       if (trResp.data) {
         return {

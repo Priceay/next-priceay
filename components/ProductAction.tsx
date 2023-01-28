@@ -26,7 +26,8 @@ export default function ProductAction(props: Props) {
   };
 
   const selectedVariation = () => {
-    if (variations) {
+    if (variations !== undefined) {
+      console.log({ variations });
       const variationF = variations.filter(
         (variation) => variation.id === selectedVariationId
       )[0];
@@ -72,7 +73,9 @@ export default function ProductAction(props: Props) {
             </button>
             {/* <div>المزيد</div> */}
             <div className="flex flex-row-reverse">
-              <span className="text-xl mx-2">{selectedVariation()?.price}</span>
+              <span className="text-xl mx-2">
+                {selectedVariation()?.price ? selectedVariation()?.price : 125}
+              </span>
               <span className="font-bold">{t("common:riyal")}</span>
             </div>
           </div>
@@ -97,15 +100,15 @@ export default function ProductAction(props: Props) {
               <path d="M5 3a2 2 0 00-2 2v6a2 2 0 002 2V5h8a2 2 0 00-2-2H5z" />
             </svg>
           </div>
-          <div
+          <button
             className="hover:cursor-pointer transp"
             onClick={() => props.showPopup("true")}
           >
             {t("common:more")}
-          </div>
+          </button>
           <button className="bg-primaryBlue text-white rounded-3xl  p-2">
             <Link
-              href={variation ? variation.link : ""}
+              href={variation ? variation.link : "#"}
               target="_blank"
               rel="noopener"
             >

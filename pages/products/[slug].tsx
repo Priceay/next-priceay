@@ -7,7 +7,6 @@ import { Scrollbar } from "swiper";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import Popup from "@/components/Popup";
-import Select from "react-select";
 import Link from "next/link";
 import moment from "moment";
 import { NextSeo } from "next-seo";
@@ -19,6 +18,7 @@ interface Props {
   productData: Product;
 }
 export default function ProductData(props: Props) {
+  console.log({ props });
   const { t } = useTranslation();
   const { locale } = useRouter();
   const [popupText, setPopupText] = useState("");
@@ -32,6 +32,7 @@ export default function ProductData(props: Props) {
     id,
     attributes: { Name, brands, price_and_stors, featured_img, slug },
   } = props.productData;
+
   const reviewCss = () => {
     if (isReview) {
       return "flex transp items-center justify-between w-full p-5 font-medium text-left border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white";
@@ -53,7 +54,7 @@ export default function ProductData(props: Props) {
   };
 
   useEffect(() => {
-    if (price_and_stors.length > 0) {
+    if (price_and_stors?.length > 0) {
       setVariations(price_and_stors);
 
       setSelectedVariationId(price_and_stors[0].id);
@@ -78,11 +79,9 @@ export default function ProductData(props: Props) {
   const getQty = () => {
     const prd = price_and_stors.find((p) => p.id === selectedVariationId);
     if (prd) {
-      // console.log(selectedVariationId,prd)
-
       return prd.quantity;
     } else {
-      price_and_stors[0].quantity;
+      return price_and_stors[0]?.quantity ? price_and_stors[0]?.quantity : 75;
     }
   };
 
@@ -142,6 +141,7 @@ export default function ProductData(props: Props) {
   if (props.productData === null) {
     return <h1>Not Found</h1>;
   }
+
   return (
     <>
       <NextSeo
@@ -153,8 +153,8 @@ export default function ProductData(props: Props) {
           description: Name,
           images: [
             {
-              url: featured_img.data.attributes.url,
-              alt: featured_img.data.attributes.alternativeText,
+              url: featured_img?.data?.attributes?.url,
+              alt: featured_img?.data?.attributes?.alternativeText,
             },
           ],
         }}
@@ -335,7 +335,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 
   const reqUrl = `${apiUrl}/products/${slug}${
     loc == "ar" ? "?locale=ar&" : "?"
-  }populate=deep`;
+  }populate=*`;
 
   const res = await fetch(reqUrl).then();
   const productData = await res.json();
@@ -345,19 +345,25 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     const testLoc = loc === "ar" ? "en" : "ar";
     const testReq = `${apiUrl}/products/${slug}${
       testLoc == "ar" ? "?locale=ar&" : "?"
-    }populate=deep`;
+    }populate=*`;
     const resp = await fetch(testReq).then((r) => r.json());
 
     if (resp.data !== null) {
       // const slug = resp.data.attributes.localizations.data[0].attributes.slug;
       // console.log({testReq})
       const locDataLength = resp.data.attributes.localizations.data.length;
+      const _product = resp.data.attributes.localizations.data[0];
+      const data = {
+        id: _product.id,
+        attributes: {
+          ...resp.data.attributes,
+          ..._product.attributes,
+        },
+      };
+
       return {
         props: {
-          productData:
-            locDataLength === 0
-              ? resp.data
-              : resp.data.attributes.localizations.data[0],
+          productData: locDataLength === 0 ? resp.data : data,
         },
       };
     }
@@ -372,9 +378,15 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   }
 
   if (loc === "ar" && productData.data.attributes.locale !== "ar") {
+    const data = {
+      ...productData.data.attributes.localizations.data[0],
+      ...productData.data.attributes,
+    };
+
     return {
       props: {
-        productData: productData.data.attributes.localizations.data[0],
+        productData: data,
+        // productData: productData.data.attributes.localizations.data[0],
       },
     };
   }

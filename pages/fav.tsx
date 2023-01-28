@@ -17,7 +17,7 @@ export default function Fav() {
 
   const { t } = useTranslation();
   const getProducts = async (param: string) => {
-    const url = `${apiUrl}/products?populate=deep${
+    const url = `${apiUrl}/products?populate=*${
       locale === "ar" ? "&locale=ar&" : "&"
     }${param}`;
 

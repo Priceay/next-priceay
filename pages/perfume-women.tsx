@@ -41,7 +41,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 
   const reqUrl = `${apiUrl}/products${
     locale == "ar" ? "?locale=ar&" : "?"
-  }filters[gender][$eq]=Female&populate=deep`;
+  }filters[gender][$eq]=Female&populate=*`;
 
   const response = await fetch(reqUrl).then((r) => r.json());
 

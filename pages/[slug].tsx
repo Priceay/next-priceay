@@ -55,10 +55,11 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 
   const reqUrl = `${apiUrl}/${slug}${
     loc == "ar" ? "?locale=ar&" : "?"
-  }populate=deep`;
+  }populate=*`;
   const res = await fetch(reqUrl).then();
   const productData = await res.json();
-  const d = productData.data.attributes.content;
+
+  const d = productData.data?.attributes.content;
 
   const tt = await unified().use(remarkParse).use(remarkHtml).process(d);
   //   console.log(tt.value);

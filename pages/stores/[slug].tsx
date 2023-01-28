@@ -49,7 +49,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   const loc = ctx.locale;
   const slug = ctx.params !== undefined ? ctx.params.slug : "";
 
-  const reqUrl = `${apiUrl}/stores/${slug}?populate=deep`;
+  const reqUrl = `${apiUrl}/stores/${slug}?populate=*`;
   const res = await fetch(reqUrl).then();
   const productData = await res.json();
 
