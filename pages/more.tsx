@@ -11,7 +11,7 @@ export default function SecondPage() {
     { title: t("common:terms-and-condition"), slug: "/terms-and-condition" },
   ];
   return (
-    <div className="container p-4">
+    <div className="container  p-4">
       <div
         className={`   flex-col px-6 md:flex items-center  py-4
                        bg-white  w-screen top-12 left-0 z-50 
