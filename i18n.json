@@ -2,6 +2,7 @@
   "locales": ["en", "ar"],
   "localeDetection": false,
   "defaultLocale": "ar",
+  "logBuild": "false",
   "pages": {
     "*": ["common"],
     "/about": ["about"]

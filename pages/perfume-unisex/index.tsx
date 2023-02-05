@@ -29,7 +29,7 @@ export default function PerfumeUnisex(props: Props) {
         <p className="text-3xl text-center">{t("common:perfume-unisex")}</p>
 
         <div className="grid md:grid-cols-4 grid-cols-2 my-8">
-          {props.productData.map((product) => (
+          {props.productData?.map((product) => (
             <ProductCard product={product} key={product.id} />
           ))}
         </div>
