@@ -27,10 +27,10 @@ export default function ProductAction(props: Props) {
 
   const selectedVariation = () => {
     if (variations !== undefined) {
-      console.log({ variations });
       const variationF = variations.filter(
         (variation) => variation.id === selectedVariationId
       )[0];
+      
 
       return variationF;
     }
@@ -46,7 +46,7 @@ export default function ProductAction(props: Props) {
   }, [selectedVariationId, variations]);
 
   const storeImg =
-    selectedVariation()?.store.data.attributes.featured_img.data.attributes.url;
+    selectedVariation()?.store?.data.attributes.featured_img.data.attributes.url;
   return (
     <>
       <section className="border border-gray-500">
@@ -57,8 +57,8 @@ export default function ProductAction(props: Props) {
           >
             الشروط
           </span>
-          {selectedVariation()?.store.data !== null
-            ? selectedVariation()?.store.data.attributes.store_text
+          {selectedVariation()?.store?.data !== null
+            ? selectedVariation()?.store?.data.attributes.store_text
             : ""}
         </div>
         <div className="">

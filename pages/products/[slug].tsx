@@ -18,7 +18,7 @@ interface Props {
   productData: Product;
 }
 export default function ProductData(props: Props) {
-  console.log({ props });
+  
   const { t } = useTranslation();
   const { locale } = useRouter();
   const [popupText, setPopupText] = useState("");
@@ -30,7 +30,7 @@ export default function ProductData(props: Props) {
   const [isReview, setIsReview] = useState(false);
   const {
     id,
-    attributes: { Name, brands, price_and_stors, featured_img, slug },
+    attributes: { Name, brands, price_and_stors, featured_img, slug,stores },
   } = props.productData;
 
   const reviewCss = () => {
@@ -68,10 +68,12 @@ export default function ProductData(props: Props) {
       const variation = price_and_stors.filter(
         (v) => v.id === selectedVariationId
       )[0];
+      const indexOfStore=price_and_stors.findIndex((v)=>v.id===selectedVariationId)
+      
 
-      const v = price_and_stors.find((p) => p.id === selectedVariationId);
-      if (v?.store.data !== null) {
-        setTextToCopy(v ? v.store.data.attributes.discount_code : "");
+      const v = stores?.data[indexOfStore];
+      if (v?.attributes!== null) {
+        setTextToCopy(v ? v.attributes.discount_code : "");
       }
     }
   }, [selectedVariationId, props, price_and_stors]);
@@ -147,6 +149,7 @@ export default function ProductData(props: Props) {
       <NextSeo
         title={Name}
         canonical={process.env.NEXT_PUBLIC_DOMAIN_NAME + "/products/" + slug}
+
         openGraph={{
           title: Name,
           locale,
@@ -165,6 +168,7 @@ export default function ProductData(props: Props) {
         <div className="flex justify-center product">
           <Swiper
             modules={[Scrollbar]}
+
             spaceBetween={50}
             slidesPerView={1}
             scrollbar={{ draggable: true }}
@@ -241,7 +245,7 @@ export default function ProductData(props: Props) {
             })}
           </div>
           <div className="my-4 flex gap-8">
-            {variations?.map((detail: any) => (
+            {variations?.map((detail: any,index:number) => (
               <div
                 key={detail.id}
                 onClick={() => setSelectedVariationId(detail.id)}
@@ -340,6 +344,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   const res = await fetch(reqUrl).then();
   const productData = await res.json();
   // console.log({ reqUrl });
+  
 
   if (productData.data == null) {
     const testLoc = loc === "ar" ? "en" : "ar";

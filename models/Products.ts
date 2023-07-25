@@ -58,6 +58,21 @@ export interface Product {
         };
       };
     };
+    stores:{
+      data:{
+        id: number;
+        attributes: {
+          store_name: string;
+          store_text: string;
+          discount_code: string;
+          conditions: string;
+          slug: string;
+          createdAt: string;
+          updatedAt: string;
+          publishedAt: string;
+        };
+      }[]
+    }
     localizations: {
       data: SingleProduct;
     };
