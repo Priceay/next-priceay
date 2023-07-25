@@ -50,6 +50,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   const slug = ctx.params !== undefined ? ctx.params.slug : "";
 
   const reqUrl = `${apiUrl}/stores/${slug}?populate=*`;
+   
   const res = await fetch(reqUrl).then();
   const productData = await res.json();
 
@@ -59,7 +60,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
         productData: null,
         error: true,
         msg: "Not Found",
-      },
+      },notFound:true
     };
   }
 

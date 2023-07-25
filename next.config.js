@@ -13,7 +13,7 @@ const nextConfig = {
   ...nextTranslate(),
 
   reactStrictMode: true,
-  swcMinify: true,
+  swcMinify: false,
   images: {
     domains: ["localhost", "priceay.herokuapp.com", "res.cloudinary.com"],
   },

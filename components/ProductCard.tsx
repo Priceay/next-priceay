@@ -9,7 +9,7 @@ export default function ProductCard(props: { product: Product }) {
     <Link href={`/products/${product.attributes.slug}`}>
       <div className="flex flex-col hover:cursor-pointer items-center justify-center">
         <div>
-          {product.attributes.featured_img.data?  <Image
+          {product.attributes.featured_img?.data?  <Image
             src={product.attributes.featured_img.data.attributes.url}
             objectFit="contain"
             alt={product.attributes.featured_img.data.attributes.alternativeText}
